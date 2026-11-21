@@ -1,6 +1,6 @@
 {
-  "name": "Anasongs",
-  "short_name": "Anasongs",
+  "name": "DJA",
+  "short_name": "DJA",
   "start_url": "./#/home",
   "scope": "./",
   "display": "standalone",

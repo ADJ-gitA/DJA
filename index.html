@@ -7,21 +7,21 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Anasongs">
+<meta name="apple-mobile-web-app-title" content="DJA">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
-<title>Anasongs – Musique</title>
+<title>DJA – Musique</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 <div class="app" id="app">
   <!-- Barre latérale -->
   <aside class="sidebar">
     <div class="panel nav">
-      <a class="brand" href="#/home"><span class="logo"><svg viewBox="0 0 24 24"><path d="M9 17V6l10-2v11" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="6.5" cy="17" r="2.5" fill="currentColor"/><circle cx="16.5" cy="15" r="2.5" fill="currentColor"/></svg></span>Anasongs</a>
+      <a class="brand" href="#/home"><span class="logo"><svg viewBox="0 0 24 24"><path d="M9 17V6l10-2v11" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="6.5" cy="17" r="2.5" fill="currentColor"/><circle cx="16.5" cy="15" r="2.5" fill="currentColor"/></svg></span>DJA</a>
       <a class="nav-link" data-nav="home" href="#/home"><svg viewBox="0 0 24 24"><path d="M12 3 2 11h3v10h6v-6h2v6h6V11h3z" fill="currentColor"/></svg>Accueil</a>
       <a class="nav-link" data-nav="search" href="#/search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Rechercher</a>
     </div>
@@ -98,7 +98,7 @@
   <div class="modal" role="dialog" aria-labelledby="setTitle">
     <button class="icon-btn modal-x" id="settingsClose" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
     <h2 id="setTitle">Versions complètes</h2>
-    <p class="muted">Anasongs garde les listes Deezer et joue chaque titre en entier grâce au lecteur officiel YouTube. Il faut pour cela une clé API YouTube (gratuite).</p>
+    <p class="muted">DJA garde les listes Deezer et joue chaque titre en entier grâce au lecteur officiel YouTube. Il faut pour cela une clé API YouTube (gratuite).</p>
     <label class="field">Clé API YouTube
       <input id="ytKeyInput" type="text" placeholder="AIza…" autocomplete="off" spellcheck="false">
     </label>
@@ -111,7 +111,7 @@
       <summary>Comment obtenir une clé (5 min)</summary>
       <ol>
         <li>Va sur <b>console.cloud.google.com</b> et connecte-toi avec ton compte Google.</li>
-        <li>Crée un projet (ex. « Anasongs »).</li>
+        <li>Crée un projet (ex. « DJA »).</li>
         <li>Menu <b>API et services → Bibliothèque</b>, cherche <b>YouTube Data API v3</b> et clique sur <b>Activer</b>.</li>
         <li><b>API et services → Identifiants → Créer des identifiants → Clé API</b>.</li>
         <li>Conseillé : dans <b>Restrictions de l'API</b>, limite la clé à « YouTube Data API v3 ».</li>
@@ -123,7 +123,7 @@
 </div>
 <div class="menu" id="menu" hidden></div>
 <div class="toast" id="toast"></div>
-<script src="config.js?v=4"></script>
-<script src="app.js?v=4"></script>
+<script src="config.js?v=5"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* Anasongs – lecteur de musique, extraits 30 s via l'API publique Deezer (JSONP). */
+/* DJA – lecteur de musique, extraits 30 s via l'API publique Deezer (JSONP). */
 'use strict';
 
 /* ================= Styles musicaux ================= */
@@ -147,7 +147,7 @@ let mode = 'audio'; // 'yt' = version complète YouTube, 'audio' = extrait Deeze
 let ytPlaying = false;
 
 /* ---------- YouTube ---------- */
-const CFG = window.ANASONGS_CONFIG || {};
+const CFG = window.DJA_CONFIG || {};
 const ytKey = () => (LS.get('ytKey', '') || CFG.youtubeApiKey || '').trim();
 const ytIds = LS.get('ytIds', {}); // id Deezer -> liste d'ids de vidéos YouTube (mémorisé)
 let ytQuotaHit = false, ytPlayer = null, ytReady = null;
@@ -501,7 +501,7 @@ async function renderStyle(seq) {
     const tracks = await loadStyle(st);
     if (!isCurrentRender(seq)) return;
     viewTracks = tracks;
-    $('.hero .info', view).innerHTML = `<b>Anasongs</b> • ${tracks.length} titres • ${ytKey() ? "versions complètes" : "extraits de 30 s"}`;
+    $('.hero .info', view).innerHTML = `<b>DJA</b> • ${tracks.length} titres • ${ytKey() ? "versions complètes" : "extraits de 30 s"}`;
     $('.tracks', view).outerHTML = actionsHTML(`style:${st.id}`) + trackTable(tracks, `style:${st.id}`);
     markPlaying(); refreshLikes(); syncModes();
   } catch (err) {
