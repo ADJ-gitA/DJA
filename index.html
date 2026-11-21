@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0b14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Anasongs">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>Anasongs – Musique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+<div class="app" id="app">
+  <!-- Barre latérale -->
+  <aside class="sidebar">
+    <div class="panel nav">
+      <a class="brand" href="#/home"><span class="logo"><svg viewBox="0 0 24 24"><path d="M9 17V6l10-2v11" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="6.5" cy="17" r="2.5" fill="currentColor"/><circle cx="16.5" cy="15" r="2.5" fill="currentColor"/></svg></span>Anasongs</a>
+      <a class="nav-link" data-nav="home" href="#/home"><svg viewBox="0 0 24 24"><path d="M12 3 2 11h3v10h6v-6h2v6h6V11h3z" fill="currentColor"/></svg>Accueil</a>
+      <a class="nav-link" data-nav="search" href="#/search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Rechercher</a>
+    </div>
+    <div class="panel library">
+      <div class="lib-head">
+        <a href="#/library" class="lib-title"><svg viewBox="0 0 24 24"><path d="M4 3v18M9 3v18M14 4l6 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>Bibliothèque</a>
+        <button class="icon-btn" id="newPlaylistBtn" title="Créer une playlist"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="lib-list" id="libList"></div>
+    </div>
+  </aside>
+
+  <!-- Contenu principal -->
+  <main class="main panel" id="main">
+    <header class="topbar" id="topbar">
+      <div class="arrows">
+        <button class="round-btn" id="backBtn" title="Retour"><svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="round-btn" id="fwdBtn" title="Suivant"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <label class="searchbox">
+        <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <input id="searchInput" type="search" placeholder="Que souhaitez-vous écouter ?" autocomplete="off">
+      </label>
+      <button class="round-btn settings-btn" id="settingsBtn" title="Réglages"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.5 5.5l1.7 1.7M16.8 16.8l1.7 1.7M5.5 18.5l1.7-1.7M16.8 7.2l1.7-1.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </header>
+    <div class="view" id="view"></div>
+  </main>
+
+  <!-- File d'attente -->
+  <aside class="queue panel" id="queuePanel" hidden>
+    <div class="queue-head"><h3>File d'attente</h3><button class="icon-btn" id="closeQueue" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div>
+    <div class="queue-body" id="queueBody"></div>
+  </aside>
+
+  <!-- Lecteur -->
+  <footer class="player" id="player">
+    <div class="now">
+      <img id="npCover" alt="" hidden>
+      <div class="np-text"><div class="np-title" id="npTitle">Aucun titre</div><div class="np-artist" id="npArtist">Choisissez un morceau</div></div>
+      <button class="icon-btn heart" id="npLike" title="Ajouter aux titres likés" hidden></button>
+    </div>
+    <div class="controls">
+      <div class="buttons">
+        <button class="icon-btn" id="shuffleBtn" title="Lecture aléatoire"><svg viewBox="0 0 24 24"><path d="M3 7h3.5c2 0 3.2 1 4.3 2.6l2.4 4.8c1.1 1.6 2.3 2.6 4.3 2.6H21M3 17h3.5c1.4 0 2.4-.5 3.2-1.3M14.3 8.3c.8-.8 1.8-1.3 3.2-1.3H21M18.5 4.5 21 7l-2.5 2.5M18.5 14.5 21 17l-2.5 2.5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="icon-btn" id="prevBtn" title="Précédent"><svg viewBox="0 0 24 24"><path d="M6 5v14M19 5 9 12l10 7z" stroke="currentColor" stroke-width="2" fill="currentColor" stroke-linejoin="round"/></svg></button>
+        <button class="play-btn" id="playBtn" title="Lecture"></button>
+        <button class="icon-btn" id="nextBtn" title="Suivant"><svg viewBox="0 0 24 24"><path d="M18 5v14M5 5l10 7-10 7z" stroke="currentColor" stroke-width="2" fill="currentColor" stroke-linejoin="round"/></svg></button>
+        <button class="icon-btn" id="repeatBtn" title="Répéter"></button>
+      </div>
+      <div class="progress">
+        <span id="curTime">0:00</span>
+        <input type="range" id="seek" min="0" max="30" step="0.1" value="0" class="slider">
+        <span id="durTime">0:30</span>
+      </div>
+    </div>
+    <div class="extra">
+      <span class="preview-badge" id="modeBadge">Extrait 30 s</span>
+      <button class="icon-btn" id="queueBtn" title="File d'attente"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 11h16M4 16h9M17 14v6l4-3z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="icon-btn" id="muteBtn" title="Couper le son"></button>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" class="slider vol">
+    </div>
+  </footer>
+
+  <!-- Navigation mobile -->
+  <nav class="mobile-nav">
+    <a data-nav="home" href="#/home"><svg viewBox="0 0 24 24"><path d="M12 3 2 11h3v10h6v-6h2v6h6V11h3z" fill="currentColor"/></svg>Accueil</a>
+    <a data-nav="search" href="#/search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Rechercher</a>
+    <a data-nav="library" href="#/library"><svg viewBox="0 0 24 24"><path d="M4 3v18M9 3v18M14 4l6 16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>Bibliothèque</a>
+  </nav>
+</div>
+<div class="video-box" id="videoBox" hidden><div id="ytPlayer"></div></div>
+
+<div class="modal-back" id="settings" hidden>
+  <div class="modal" role="dialog" aria-labelledby="setTitle">
+    <button class="icon-btn modal-x" id="settingsClose" title="Fermer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <h2 id="setTitle">Versions complètes</h2>
+    <p class="muted">Anasongs garde les listes Deezer et joue chaque titre en entier grâce au lecteur officiel YouTube. Il faut pour cela une clé API YouTube (gratuite).</p>
+    <label class="field">Clé API YouTube
+      <input id="ytKeyInput" type="text" placeholder="AIza…" autocomplete="off" spellcheck="false">
+    </label>
+    <div class="status" id="ytStatus"></div>
+    <div class="modal-actions">
+      <button class="pill ghost" id="ytKeyClear">Retirer la clé</button>
+      <button class="pill" id="ytKeySave">Enregistrer</button>
+    </div>
+    <details class="howto">
+      <summary>Comment obtenir une clé (5 min)</summary>
+      <ol>
+        <li>Va sur <b>console.cloud.google.com</b> et connecte-toi avec ton compte Google.</li>
+        <li>Crée un projet (ex. « Anasongs »).</li>
+        <li>Menu <b>API et services → Bibliothèque</b>, cherche <b>YouTube Data API v3</b> et clique sur <b>Activer</b>.</li>
+        <li><b>API et services → Identifiants → Créer des identifiants → Clé API</b>.</li>
+        <li>Conseillé : dans <b>Restrictions de l'API</b>, limite la clé à « YouTube Data API v3 ».</li>
+        <li>Copie la clé et colle-la ci-dessus. À refaire une fois sur chaque appareil (Mac, téléphone).</li>
+      </ol>
+      <p class="muted">Limite gratuite : environ 100 nouveaux titres trouvés par jour. Les titres déjà trouvés sont mémorisés et ne comptent plus.</p>
+    </details>
+  </div>
+</div>
+<div class="menu" id="menu" hidden></div>
+<div class="toast" id="toast"></div>
+<script src="config.js?v=4"></script>
+<script src="app.js?v=4"></script>
+</body>
+</html>
