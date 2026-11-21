@@ -3,6 +3,7 @@
 
 /* ================= Styles musicaux ================= */
 const STYLES = [
+  { id: 'nouveautes', name: 'Nouveautés de la semaine', playlist: 1478649355, color: 'linear-gradient(135deg,#ff7a59 0%,#b5179e 100%)', solid: '#ff7a59' },
   { id: 'maroc', name: 'Musique marocaine', color: 'linear-gradient(135deg,#c1272d 0%,#8a1c22 55%,#006233 100%)', solid: '#a3242a',
     artists: ['Saad Lamjarred', 'ElGrande Toto', 'Nass El Ghiwane', 'Douzi', 'Hatim Ammor', 'Asma Lmnawar', 'Manal', 'Dizzy DROS', 'Inkonnu', 'Hoba Hoba Spirit', 'Jil Jilala', 'Najat Aatabou', 'Stormy', 'Abdelhadi Belkhayat', 'Hamid El Kasri', 'Zina Daoudia'] },
   { id: 'topmaroc', name: 'Top Maroc', playlist: 1362512715, solid: '#006233', desc: 'Le classement Deezer de ce qu\'on écoute le plus au Maroc' },
