@@ -157,6 +157,7 @@ function loadYT() {
   ytReady = new Promise((resolve, reject) => {
     window.onYouTubeIframeAPIReady = () => {
       ytPlayer = new YT.Player('ytPlayer', {
+        host: 'https://www.youtube-nocookie.com', // mode confidentialité renforcée de YouTube
         width: '100%', height: '100%',
         playerVars: { playsinline: 1, rel: 0, modestbranding: 1, autoplay: 1 },
         events: { onReady: () => resolve(ytPlayer), onStateChange: onYtState, onError: onYtError },
